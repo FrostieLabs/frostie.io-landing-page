@@ -2,11 +2,18 @@
 
 # How to run
 
+* `<env>`
+  * dev (default)
+  * prod
+
 ```bash
-make up
+make up ENV=<env> # or just `make up`
 ```
 
-This will build the docker image and start the container. And you should be able to see the page at http://localhost:3080
+This will build the docker image and start the container. And you should be able to see the page at
+
+* ENV=dev http://localhost:5173
+* ENV=prod http://localhost:3080
 
 To stop the container, run:
 

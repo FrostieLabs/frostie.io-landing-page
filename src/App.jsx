@@ -61,7 +61,7 @@ export default function App() {
         <section id="page-1" className="h-screen snap-start flex flex-col justify-center items-center px-8 lg:px-32 pt-24 space-y-6 text-center">
           <h1 className="text-8xl lg:text-9xl font-extrabold">Content, Owned.</h1>
           <p className="text-2xl lg:text-3xl font-mono max-w-6xl">
-            A decentralized CMS engine. Built on Sui and Walrus.
+            A decentralized CMS engine. Built on SUI and WALRUS.
           </p>
           <div className="space-x-4">
               <button

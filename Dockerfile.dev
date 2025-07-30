@@ -1,0 +1,19 @@
+
+FROM node:18-alpine AS builder
+
+RUN addgroup -S frostie \
+  && adduser -S -G frostie -h /opt/frostie -s /bin/sh frostie \
+  && mkdir -p /app \
+  && chown frostie:frostie /app \
+  && chmod 700 /app
+
+WORKDIR /app
+
+# only copy package manifests to leverage Docker cache
+COPY package.json package-lock.json ./
+
+USER frostie
+
+EXPOSE 5173
+
+ENTRYPOINT [ "/app/entrypoint.sh" ]
