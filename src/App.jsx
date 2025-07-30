@@ -106,7 +106,7 @@ export default function App() {
         </section>
 
         {/* Page 3 */}
-        <section id="page-" className="h-screen snap-start flex flex-wrap justify-evenly items-start gap-24 px-8 lg:px-32 py-16">
+        <section id="page-3" className="h-screen snap-start flex flex-wrap justify-evenly items-start gap-24 px-8 lg:px-32 py-16">
           <Card
             title="Blueprint Authoring"
             content="Developers publish schema-based content blueprints for creators to build upon — enabling reusable templates and publishing logic."
