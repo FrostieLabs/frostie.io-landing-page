@@ -17,7 +17,9 @@ jobs:
         run: make build.dist
 
       - name: Add CNAME file
-        run: echo 'frostie.io' > dist/CNAME
+        run: |-
+          sudo chown -R $(id -u):$(id -g) dist
+          echo 'frostie.io' > dist/CNAME
 
       - name: Set release timestamp
         id: timestamp
