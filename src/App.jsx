@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import logo from './assets/frostielabs-full.svg';
 import './index.css';
 
 function Card({ title, content }) {
@@ -15,6 +16,7 @@ function Card({ title, content }) {
 export default function App() {
   const [showNav, setShowNav] = useState(true);
   const scrollRef = useRef(null);
+  const page2Ref = useRef(null);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -36,7 +38,7 @@ export default function App() {
       {showNav && (
         <nav className="fixed top-0 left-0 right-0 z-10 px-8 lg:px-32 py-4 flex justify-between items-center bg-transparent">
           <div className="text-xl font-bold font-mono">
-            <img src="src/assets/transparent-background-light.svg" alt="Logo" className="h-24" />
+            <img src={logo} alt="Logo" className="h-24" />
           </div>
           <div className="space-x-6 font-mono">
             <a href="#" className="hover:underline">Home</a>
@@ -56,23 +58,39 @@ export default function App() {
         className="relative h-full w-full overflow-y-scroll snap-y snap-mandatory"
       >
         {/* Page 1 */}
-        <section className="h-screen snap-start flex flex-col justify-center items-center px-8 lg:px-32 pt-24 space-y-6 text-center">
+        <section id="page-1" className="h-screen snap-start flex flex-col justify-center items-center px-8 lg:px-32 pt-24 space-y-6 text-center">
           <h1 className="text-8xl lg:text-9xl font-extrabold">Content, Owned.</h1>
           <p className="text-2xl lg:text-3xl font-mono max-w-6xl">
-            A decentralized CMS engine built on SUI and Walrus.
+            A decentralized CMS engine. Built on Sui and Walrus.
           </p>
           <div className="space-x-4">
-            <button className="px-6 py-3 bg-gradient-to-r from-teal-400 to-blue-500 rounded-lg text-white font-medium">Explore</button>
-            <button className="px-6 py-3 border border-white rounded-lg text-white font-medium">Create</button>
+              <button
+                onClick={() => page2Ref.current?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-6 py-3 bg-gradient-to-r from-teal-400 to-blue-500 rounded-lg text-white font-medium"
+              >
+                Explore
+              </button>
+              <button
+                onClick={() =>
+                  window.open(
+                    'https://docs.google.com/document/d/1xP0Wx3tHvkbRr0ESgH3G1IN5XgUj7Zd1s4fiklJdxkA/edit?tab=t.0#heading=h.71d6ccciikwa',
+                    '_blank',
+                    'noopener,noreferrer'
+                  )
+                }
+                className="px-6 py-3 border border-white rounded-lg text-white font-medium"
+              >
+                Whitepaper
+              </button>
           </div>
         </section>
 
         {/* Page 2 */}
-        <section className="h-screen snap-start flex flex-col lg:flex-row justify-center items-center px-8 lg:px-32 space-y-6 lg:space-y-0">
+        <section id="page-2" ref={page2Ref} className="h-screen snap-start flex flex-col lg:flex-row justify-center items-center px-8 lg:px-32 space-y-6 lg:space-y-0">
           <div className="lg:w-1/2 w-full space-y-6">
             <h2 className="text-5xl font-bold">Composable CMS Infrastructure</h2>
             <p className="text-lg font-mono max-w-2xl">
-              Frostie Labs is building the future of publishing. Developers and creators collaborate on FrostieStack through customizable blueprints, powerful publishing flows, and shared token incentives.
+              FrostieStack is a decentralized CMS engine designed to empower the future of publishing. Developers and creators collaborate through customizable blueprints, powerful publishing flows, and shared token incentives.
             </p>
           </div>
           <div className="lg:w-1/2 w-full h-80 flex justify-center items-center">
@@ -88,7 +106,7 @@ export default function App() {
         </section>
 
         {/* Page 3 */}
-        <section className="h-screen snap-start flex flex-wrap justify-evenly items-start gap-24 px-8 lg:px-32 py-16">
+        <section id="page-3" className="h-screen snap-start flex flex-wrap justify-evenly items-start gap-24 px-8 lg:px-32 py-16">
           <Card
             title="Blueprint Authoring"
             content="Developers publish schema-based content blueprints for creators to build upon — enabling reusable templates and publishing logic."

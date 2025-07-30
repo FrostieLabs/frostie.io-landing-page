@@ -1,0 +1,31 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build site using Docker Compose + Make
+        run: make build.dist
+
+      - name: Add CNAME file
+        run: echo 'frostie.io' > dist/CNAME
+
+      - name: Set release timestamp
+        id: timestamp
+        run: echo "value=release - $(date +%FT%H%M%S%Z | tr -d '-')" >> "$GITHUB_OUTPUT"
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          commit_message: ${{ steps.timestamp.outputs.value }}
