@@ -19,8 +19,13 @@ jobs:
       - name: Add CNAME file
         run: echo 'frostie.io' > dist/CNAME
 
+      - name: Set release timestamp
+        id: timestamp
+        run: echo "value=release - $(date +%FT%H%M%S%Z | tr -d '-')" >> "$GITHUB_OUTPUT"
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          commit_message: ${{ steps.timestamp.outputs.value }}
