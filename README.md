@@ -12,8 +12,8 @@ make up ENV=<env> # or just `make up`
 
 This will build the docker image and start the container. And you should be able to see the page at
 
-* ENV=dev http://localhost:5173
-* ENV=prod http://localhost:3080
+* ENV=dev - http://localhost:5173
+* ENV=prod - http://localhost:3080
 
 To stop the container, run:
 
