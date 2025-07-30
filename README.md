@@ -23,7 +23,7 @@ make down
 
 The output will be written to the ./dist directory on your local machine. You can then serve the contents of dist/ using any static file server or deploy it to GitHub Pages or a CDN.
 
-To stop the container, run:
+To produce `dist/` files
 
 ```bash
 make build.dist
