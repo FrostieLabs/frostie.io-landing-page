@@ -40,15 +40,27 @@ export default function App() {
           <div className="text-xl font-bold font-mono">
             <img src={logo} alt="Logo" className="h-24" />
           </div>
-          <div className="space-x-6 font-mono">
+          {/* <div className="space-x-6 font-mono">
             <a href="#" className="hover:underline">Home</a>
             <a href="#" className="hover:underline">Learn</a>
             <a href="#" className="hover:underline">Build</a>
             <a href="#" className="hover:underline">Connection</a>
-          </div>
-          <div className="space-x-4">
+          </div> */}
+          {/* <div className="space-x-4">
             <button className="px-4 py-2 border border-white rounded-lg font-mono">Create</button>
             <button className="px-4 py-2 font-mono">Sign In</button>
+          </div> */}
+          <div className="space-x-4">
+            <button
+              onClick={() =>
+                  window.open(
+                    'https://form.typeform.com/to/NNXsg2Gb',
+                    '_blank',
+                    'noopener,noreferrer'
+                  )
+                }
+              className="px-4 py-2 border border-white rounded-lg font-mono">Get Early Access
+            </button>
           </div>
         </nav>
       )}
