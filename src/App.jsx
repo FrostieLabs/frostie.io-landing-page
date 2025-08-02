@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
 import logo from './assets/frostielabs-full.svg';
-import './index.css';
 
 // Mock logo component since we can't import actual SVG in this environment
 const Logo = () => (
