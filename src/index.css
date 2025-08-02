@@ -12,13 +12,125 @@ html, body, #root {
   @apply text-white;
 }
 
-/* Float animation for cards */
+/* Enhanced float animation for background elements */
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  50% {
+    transform: translateY(-10px) translateX(-15px);
+  }
+  75% {
+    transform: translateY(-25px) translateX(5px);
+  }
 }
+
+/* Float with rotation for squares */
+@keyframes floatRotate {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(45deg);
+  }
+  25% {
+    transform: translateY(-15px) translateX(8px) rotate(60deg);
+  }
+  50% {
+    transform: translateY(-8px) translateX(-12px) rotate(30deg);
+  }
+  75% {
+    transform: translateY(-20px) translateX(3px) rotate(75deg);
+  }
+}
+
+/* Card floating animation */
 .float {
   animation: float 6s ease-in-out infinite;
+}
+
+.float:nth-child(1) { animation-delay: 0s; }
+.float:nth-child(2) { animation-delay: 1.5s; }
+.float:nth-child(3) { animation-delay: 3s; }
+.float:nth-child(4) { animation-delay: 4.5s; }
+
+/* Background floating elements */
+.floating-circle-1 {
+  top: 10%;
+  left: 10%;
+  animation: float 8s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.floating-circle-2 {
+  top: 60%;
+  right: 15%;
+  animation: float 6s ease-in-out infinite reverse;
+  animation-delay: 2s;
+}
+
+.floating-circle-3 {
+  bottom: 20%;
+  left: 20%;
+  animation: float 10s ease-in-out infinite;
+  animation-delay: 4s;
+}
+
+.floating-square-1 {
+  top: 30%;
+  right: 30%;
+  animation: floatRotate 7s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.floating-square-2 {
+  bottom: 40%;
+  right: 10%;
+  animation: floatRotate 9s ease-in-out infinite reverse;
+  animation-delay: 3s;
+}
+
+.floating-dot-1 {
+  top: 80%;
+  left: 70%;
+  animation: float 5s ease-in-out infinite;
+  animation-delay: 2.5s;
+}
+
+.floating-dot-2 {
+  top: 25%;
+  left: 80%;
+  animation: float 4s ease-in-out infinite reverse;
+  animation-delay: 1.5s;
+}
+
+.floating-dot-3 {
+  bottom: 60%;
+  left: 60%;
+  animation: float 6s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+/* Page 2 specific orbs */
+.page2-orb-1 {
+  top: 15%;
+  right: 10%;
+  animation: float 7s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.page2-orb-2 {
+  bottom: 20%;
+  left: 15%;
+  animation: float 5s ease-in-out infinite reverse;
+  animation-delay: 2s;
+}
+
+.page2-orb-3 {
+  top: 60%;
+  right: 20%;
+  animation: float 9s ease-in-out infinite;
+  animation-delay: 0.5s;
 }
 
 /* Slow spin animation for rotating text */
