@@ -273,9 +273,9 @@ export default function App() {
               <div className="col-span-1">
                 <h4 className="text-white font-semibold mb-4">Community</h4>
                 <ul className="space-y-2 text-gray-400 text-sm">
-                  <li><a href="https://discord.gg/mT4hGZc9" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Discord</a></li>
+                  <li><a href="https://discord.gg/Rg4NsndKMS" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Discord</a></li>
                   <li><a href="https://x.com/FrostieLabs" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">X</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors">Telegram</a></li>
+                  <li><a href="https://t.me/frostie_io" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Telegram</a></li>
                   <li><a href="#" className="hover:text-white transition-colors">YouTube</a></li>
                 </ul>
               </div>
