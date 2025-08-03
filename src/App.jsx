@@ -135,7 +135,7 @@ export default function App() {
               onClick={() => {
                 console.log('Button clicked!'); // Debug log
                 window.open(
-                  'https://form.typeform.com/to/NNXsg2Gb',
+                  'https://forms.gle/5QerzN2BoYjfAFQm9',
                   '_blank',
                   'noopener,noreferrer'
                 );
@@ -300,7 +300,7 @@ export default function App() {
                 <button
                   onClick={() =>
                     window.open(
-                      'https://form.typeform.com/to/NNXsg2Gb',
+                      'https://forms.gle/5QerzN2BoYjfAFQm9',
                       '_blank',
                       'noopener,noreferrer'
                     )
