@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import logo from './assets/frostielabs-full.svg';
+import WhitePaper from './WhitePaper.jsx';
 
 // Mock logo component since we can't import actual SVG in this environment
 const Logo = () => (
@@ -20,6 +21,7 @@ function Card({ title, content, titleColor, bgColor }) {
 }
 
 export default function App() {
+  const [currentPage, setCurrentPage] = useState('home'); // 'home' or 'whitepaper'
   const [showNav, setShowNav] = useState(true);
   const scrollRef = useRef(null);
   const page2Ref = useRef(null);
@@ -34,6 +36,11 @@ export default function App() {
     container.addEventListener('scroll', onScroll);
     return () => container.removeEventListener('scroll', onScroll);
   }, []);
+
+  // Handle page routing
+  if (currentPage === 'whitepaper') {
+    return <WhitePaper onBackToHome={() => setCurrentPage('home')} />;
+  }
 
   return (
     <div className="relative h-full w-full">
@@ -132,14 +139,13 @@ export default function App() {
           </div>
           <div className="space-x-4">
             <button
-              onClick={() => {
-                console.log('Button clicked!'); // Debug log
+              onClick={() =>
                 window.open(
                   'https://forms.gle/5QerzN2BoYjfAFQm9',
                   '_blank',
                   'noopener,noreferrer'
-                );
-              }}
+                )
+              }
               className="px-4 py-2 border border-white rounded-lg font-mono hover:bg-white/10 transition-colors text-white cursor-pointer relative z-10">
               Get Early Access
             </button>
@@ -165,13 +171,7 @@ export default function App() {
                 Explore
               </button>
               <button
-                onClick={() =>
-                  window.open(
-                    'https://docs.google.com/document/d/1xP0Wx3tHvkbRr0ESgH3G1IN5XgUj7Zd1s4fiklJdxkA/edit?tab=t.0#heading=h.71d6ccciikwa',
-                    '_blank',
-                    'noopener,noreferrer'
-                  )
-                }
+                onClick={() => setCurrentPage('whitepaper')}
                 className="px-6 py-3 border border-white rounded-lg text-white font-medium hover:bg-white/10 transition-colors"
               >
                 Whitepaper
@@ -284,7 +284,7 @@ export default function App() {
               <div className="col-span-1">
                 <h4 className="text-white font-semibold mb-4">About</h4>
                 <ul className="space-y-2 text-gray-400 text-sm">
-                  <li><a href="https://docs.google.com/document/d/1xP0Wx3tHvkbRr0ESgH3G1IN5XgUj7Zd1s4fiklJdxkA/edit?tab=t.0#heading=h.71d6ccciikwa" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Whitepaper</a></li>
+                  <li><button onClick={() => setCurrentPage('whitepaper')} className="hover:text-white transition-colors cursor-pointer">Whitepaper</button></li>
                   <li><a href="https://www.linkedin.com/company/frostie" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Careers</a></li>
                 </ul>
               </div>
