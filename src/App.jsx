@@ -9,6 +9,27 @@ const Logo = () => (
   </div>
 );
 
+// Custom router hook
+function useRouter() {
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPath(window.location.pathname);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  const navigate = (path) => {
+    window.history.pushState({}, '', path);
+    setCurrentPath(path);
+  };
+
+  return { currentPath, navigate };
+}
+
 function Card({ title, content, titleColor, bgColor }) {
   return (
     <div className={`w-full max-w-sm ${bgColor} p-6 rounded-2xl shadow-lg transform transition hover:scale-105 hover:shadow-2xl`}>
@@ -21,7 +42,7 @@ function Card({ title, content, titleColor, bgColor }) {
 }
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState('home'); // 'home' or 'whitepaper'
+  const { currentPath, navigate } = useRouter();
   const [showNav, setShowNav] = useState(true);
   const scrollRef = useRef(null);
   const page2Ref = useRef(null);
@@ -32,14 +53,16 @@ export default function App() {
 
   useEffect(() => {
     const container = scrollRef.current;
-    const onScroll = () => setShowNav(container.scrollTop === 0);
-    container.addEventListener('scroll', onScroll);
-    return () => container.removeEventListener('scroll', onScroll);
-  }, []);
+    if (container) {
+      const onScroll = () => setShowNav(container.scrollTop === 0);
+      container.addEventListener('scroll', onScroll);
+      return () => container.removeEventListener('scroll', onScroll);
+    }
+  }, [currentPath]);
 
-  // Handle page routing
-  if (currentPage === 'whitepaper') {
-    return <WhitePaper onBackToHome={() => setCurrentPage('home')} />;
+  // Handle page routing based on URL path
+  if (currentPath === '/whitepaper') {
+    return <WhitePaper onBackToHome={() => navigate('/')} />;
   }
 
   return (
@@ -171,7 +194,7 @@ export default function App() {
                 Explore
               </button>
               <button
-                onClick={() => setCurrentPage('whitepaper')}
+                onClick={() => navigate('/whitepaper')}
                 className="px-6 py-3 border border-white rounded-lg text-white font-medium hover:bg-white/10 transition-colors"
               >
                 Whitepaper
@@ -284,19 +307,20 @@ export default function App() {
               <div className="col-span-1">
                 <h4 className="text-white font-semibold mb-4">About</h4>
                 <ul className="space-y-2 text-gray-400 text-sm">
-                  <li><button onClick={() => setCurrentPage('whitepaper')} className="hover:text-white transition-colors cursor-pointer">Whitepaper</button></li>
+                  <li>
+                    <button
+                      onClick={() => navigate('/whitepaper')}
+                      className="hover:text-white transition-colors cursor-pointer text-left"
+                    >
+                      Whitepaper
+                    </button>
+                  </li>
                   <li><a href="https://www.linkedin.com/company/frostie" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Careers</a></li>
                 </ul>
               </div>
 
               {/* Action Buttons - Now in the grid on the right */}
               <div className="col-span-1 flex flex-col gap-3">
-                {/* <button className="px-6 py-2 bg-teal-400 hover:bg-teal-500 text-white rounded-lg font-medium transition-colors text-sm">
-                  SIGN IN
-                </button>
-                <button className="px-6 py-2 border border-gray-600 hover:border-gray-500 text-white rounded-lg font-medium transition-colors text-sm">
-                  CREATE
-                </button> */}
                 <button
                   onClick={() =>
                     window.open(
@@ -322,6 +346,19 @@ export default function App() {
           </div>
         </section>
       </div>
+
+      {/* CSS Animations */}
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
+        }
+
+        @keyframes floatRotate {
+          0%, 100% { transform: translateY(0px) rotate(45deg); }
+          50% { transform: translateY(-15px) rotate(45deg); }
+        }
+      `}</style>
     </div>
   );
 }
