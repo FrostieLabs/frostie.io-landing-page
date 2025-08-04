@@ -176,7 +176,7 @@ Complete transition to decentralized governance with:
 • Production Deployment
 • Real-time Editing
 • Full Token Integration
-• Validator - Distributed Static Site Generator (Future)`
+• Validator - Decentralized Static Site Generator (Future)`
   },
 
   risks: {
