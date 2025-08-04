@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import logo from './assets/frostielabs-full.svg';
+import pdf from './assets/FrostieLabs - Whitepaper.pdf';
 import { WhitePaperSections } from './WhitePaperContent.jsx';
 
 // Mock logo component
@@ -12,7 +13,7 @@ const Logo = () => (
 // Table of Contents Component
 const TableOfContents = ({ sections, activeSection, onSectionClick }) => {
   const sectionKeys = Object.keys(sections);
-  
+
   return (
     <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 sticky top-24 z-40">
       <h3 className="text-lg font-bold text-white mb-4 font-mono">Table of Contents</h3>
@@ -39,7 +40,7 @@ const TableOfContents = ({ sections, activeSection, onSectionClick }) => {
 const formatMarkdownText = (text) => {
   // Split text by ** to find bold sections
   const parts = text.split(/\*\*(.*?)\*\*/g);
-  
+
   return parts.map((part, index) => {
     // Every odd index is bold text (between **)
     if (index % 2 === 1) {
@@ -52,12 +53,27 @@ const formatMarkdownText = (text) => {
 // Section Component
 const Section = ({ section, isActive }) => {
   if (!isActive) return null;
-  
+
   return (
     <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 lg:p-12 border border-white/10">
       <h2 className="text-3xl lg:text-4xl font-bold text-white mb-8 font-mono">
         {section.title}
       </h2>
+      {/* Pre Image rendering right after title */}
+      {section.preImage && (
+        <div className="mb-8">
+          <img
+            src={section.preImage.src}
+            className="w-full max-w-4xl mx-auto rounded-lg border border-white/10 shadow-2xl"
+          />
+          {section.preImage.caption && (
+            <p className="text-center text-sm text-gray-400 mt-3 font-mono">
+              {section.preImage.caption}
+            </p>
+          )}
+        </div>
+      )}
+
       <div className="prose prose-lg prose-invert max-w-none">
         {section.content.split('\n\n').map((paragraph, index) => {
           if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
@@ -92,13 +108,28 @@ const Section = ({ section, isActive }) => {
           }
         })}
       </div>
+
+      {/* Post Image rendering right after title */}
+      {section.postImage && (
+        <div className="mb-8">
+          <img
+            src={section.postImage.src}
+            className="w-full max-w-4xl mx-auto rounded-lg border border-white/10 shadow-2xl"
+          />
+          {section.postImage.caption && (
+            <p className="text-center text-sm text-gray-400 mt-3 font-mono">
+              {section.postImage.caption}
+            </p>
+          )}
+        </div>
+      )}
     </div>
   );
 };
 
 export default function WhitePaper({ onBackToHome }) {
   const [activeSection, setActiveSection] = useState('abstract');
-  
+
   return (
     <div className="relative h-full w-full">
       {/* Animated floating background - same as main page */}
@@ -173,7 +204,7 @@ export default function WhitePaper({ onBackToHome }) {
             <div className="grid lg:grid-cols-4 gap-8">
               {/* Table of Contents - Sidebar */}
               <div className="lg:col-span-1">
-                <TableOfContents 
+                <TableOfContents
                   sections={WhitePaperSections}
                   activeSection={activeSection}
                   onSectionClick={setActiveSection}
@@ -182,17 +213,17 @@ export default function WhitePaper({ onBackToHome }) {
 
               {/* Main Content */}
               <div className="lg:col-span-3">
-                <Section 
+                <Section
                   section={WhitePaperSections[activeSection]}
                   isActive={true}
                 />
-                
+
                 {/* Call to Action */}
                 {activeSection === 'joinUs' && (
                   <div className="mt-12 bg-gradient-to-r from-teal-400/10 to-blue-500/10 rounded-xl p-8 border border-teal-400/20">
                     <h3 className="text-2xl font-bold text-white mb-4 font-mono">Join the FrostieStack Ecosystem</h3>
                     <p className="text-gray-300 mb-6 leading-relaxed">
-                      Ready to be part of the decentralized publishing revolution? Get early access to FrostieStack 
+                      Ready to be part of the decentralized publishing revolution? Get early access to FrostieStack
                       and help shape the future of sovereign content creation.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4">
@@ -210,7 +241,7 @@ export default function WhitePaper({ onBackToHome }) {
                       <button
                         onClick={() =>
                           window.open(
-                            '/src/assets/FrostieLabs - Whitepaper.pdf',
+                            pdf,
                             '_blank',
                             'noopener,noreferrer'
                           )
