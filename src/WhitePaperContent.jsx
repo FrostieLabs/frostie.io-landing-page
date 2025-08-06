@@ -1,6 +1,6 @@
 import roadMap from './assets/FrostieStack Development Roadmap.png';
 import arch from './assets/FrostieStack Architecture.png';
-import workflow from './assets/FrostieStack Workflow.png';
+import workflow from './assets/FrostieStack User Flow.png';
 
 export const WhitePaperSections = {
   abstract: {
@@ -31,7 +31,7 @@ FrostieStack emerges as a solution to these fundamental issues by providing a de
     title: "2. Vision & Mission",
     preImage: {
       src: workflow,
-      caption: "FrostieStack Workflow"
+      caption: "FrostieStack User Flow"
     },
     content: `FrostieStack envisions a future where content creation and distribution are truly decentralized, where creators maintain sovereign ownership of their work, and where developers can build innovative publishing applications without being constrained by centralized platform limitations.
 
