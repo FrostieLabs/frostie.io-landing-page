@@ -64,7 +64,7 @@ const Section = ({ section, isActive }) => {
         <div className="mb-8">
           <img
             src={section.preImage.src}
-            className="w-full max-w-4xl mx-auto rounded-lg border border-white/10 shadow-2xl"
+            className="w-full mx-auto"
           />
           {section.preImage.caption && (
             <p className="text-center text-sm text-gray-400 mt-3 font-mono">
@@ -114,7 +114,7 @@ const Section = ({ section, isActive }) => {
         <div className="mb-8">
           <img
             src={section.postImage.src}
-            className="w-full max-w-4xl mx-auto rounded-lg border border-white/10 shadow-2xl"
+            className="w-full mx-auto"
           />
           {section.postImage.caption && (
             <p className="text-center text-sm text-gray-400 mt-3 font-mono">
@@ -184,7 +184,7 @@ export default function WhitePaper({ onBackToHome }) {
 
       {/* White Paper Content */}
       <div className="relative z-10 h-full overflow-y-auto">
-        <div className="container mx-auto px-8 lg:px-32 pt-32 pb-16">
+        <div className="container mx-auto px-4 lg:px-8 pt-32 pb-16">
           <div className="max-w-7xl mx-auto">
             {/* Header */}
             <div className="text-center mb-16">
@@ -201,7 +201,7 @@ export default function WhitePaper({ onBackToHome }) {
             </div>
 
             {/* Content Layout */}
-            <div className="grid lg:grid-cols-4 gap-8">
+            <div className="grid lg:grid-cols-5 gap-8">
               {/* Table of Contents - Sidebar */}
               <div className="lg:col-span-1">
                 <TableOfContents
@@ -212,7 +212,7 @@ export default function WhitePaper({ onBackToHome }) {
               </div>
 
               {/* Main Content */}
-              <div className="lg:col-span-3">
+              <div className="lg:col-span-4">
                 <Section
                   section={WhitePaperSections[activeSection]}
                   isActive={true}
