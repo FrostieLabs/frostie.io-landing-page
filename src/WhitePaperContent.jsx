@@ -159,7 +159,7 @@ Smart Contracts & Developer Resources
 Community & Ecosystem
 
 • Early developer onboarding programs
-• Builder incentives for blueprint experimentation
+• Builder/Creator incentives for blueprint experimentation
 
 **Q4 2025 - MVP Launch on Testnet**
 
