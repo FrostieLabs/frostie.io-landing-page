@@ -144,39 +144,84 @@ Complete transition to decentralized governance with:
     },
     content: `**Q3 2025 - Foundation**
 
-• Core infrastructure development
-• Initial testnet launch
-• Developer documentation and tools
-• Community building initiatives
+Core Infrastructure
+
+• Initial architecture for FrostieStack CMS engine
+• Smart contract framework for blueprint and site metadata
+• Developer SDK for blueprint creation and publishing
+
+Smart Contracts & Developer Resources
+
+• SUI Move smart contracts (blueprint publishing, site management, monetization)
+• WALRUS integration (object storage, walrus sites publishing)
+• Developer Documentation & Quickstart Guides (onboarding for builders, blueprints and API references)
+
+Community & Ecosystem
+
+• Early developer onboarding programs
+• Builder/Creator incentives for blueprint experimentation
 
 **Q4 2025 - MVP Launch on Testnet**
 
-• NextJS Blueprint
-• Developer Blueprint Portal
-• Creator Admin Portal
-• Walrus Site Support
-• Basic RBAC
+Product Features
 
-**Q1 2026 - MVP Improvements & Testnet Tokenization**
+• Next.js Blueprint as first official template
+• Developer Blueprint Portal (publish/manage templates)
+• Creator Admin Portal (low-code publishing flow)
+• Basic RBAC for roles and permissions
+• Walrus Site Support for decentralized hosting
+
+Developer Experience
+
+• CLI tools for blueprint packaging & deployment
+• API for listing and retrieving blueprints from Walrus
+
+**Q1 2026 - MVP Expansion & Testnet Tokenization**
+
+Templates & Blueprints
 
 • Hugo Blueprint
 • Docusaurus Blueprint
-• Fine Grained RBAC
+
+Platform Enhancements
+
+• Fine Grained RBAC (section/page-level permissions)
 • Low-code Content Editing
-• Testnet Tokenization
+• Blueprint marketplace testnet launch
+
+Tokenization
+
+• Testnet integration of $FROSTIE token
 
 **Q2 2026 - Pre-Mainnet Preparation**
 
-• Governance Implementation
-• Tokenomics Finalization
-• Security Audits
+Governance & Tokenomics
+
+• On-chain governance implementation
+• Tokenomics Finalization and Distribution Plan
+
+Security & Compliance
+
+• Third-party security audits
+• Stress testing of Walrus publishing integration
+
+Operational Readiness
+
+• Ecosystem readiness
+• Mainnet deployment readiness
 
 **Q3 2026 - Mainnet (TGE)**
 
-• Production Deployment
-• Real-time Editing
-• Full Token Integration
-• Validator - Decentralized Static Site Generator (Future)`
+Launch Deliverables
+
+• Mainnet deployment of FrostieStack
+• Token Generation Event for $FROSTIE
+• Full token integration for monetization, licensing, governance
+
+Future Vision
+
+• Decentralized static site generator network (validator-based)
+• Real-time Editing`
   },
 
   risks: {
